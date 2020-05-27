@@ -1,10 +1,10 @@
 import React from 'react';
-import PokemonPreview from './pokemonPreview/PokemonPreview';
+import Preview from './preview/Preview';
 
 function App() {
   return (
     <div>
-      <PokemonPreview id={123} />
+      <Preview id={123} />
     </div>
   );
 }

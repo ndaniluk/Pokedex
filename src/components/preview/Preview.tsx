@@ -1,22 +1,23 @@
 import React from 'react';
 import ApiInfo from '../../api.json';
-import './pokemonPreview.css';
-import PokemonTypes, { TypeOrCounter } from '../pokemonTypes/PokemonTypes';
+import './Preview.css';
+import Types from '../types/Types';
+import { TypeOrCounter } from '../types/TypeOrCounter';
 
-export interface PokemonPreviewProps {
+export interface PreviewProps {
     id: number
 }
 
-export interface PokemonPreviewState {
+export interface PreviewState {
     id: number,
     name: string,
     img: string,
 }
 
-class PokemonPreview extends React.Component<PokemonPreviewProps, PokemonPreviewState> {
+class Preview extends React.Component<PreviewProps, PreviewState> {
     formattedId = this.props.id.toString().padStart(3, '0');
 
-    constructor(props: PokemonPreviewProps) {
+    constructor(props: PreviewProps) {
         super(props);
         this.state = {
             id: this.props.id,
@@ -41,16 +42,16 @@ class PokemonPreview extends React.Component<PokemonPreviewProps, PokemonPreview
 
     render() {
         const pokemonName = this.firstLetterToUpperCase(this.state.name);
-        // const pokemonTypes = this.state.types.map((element: PokemonType) => <span key={element.type.name}>{element.type.name} </span>);
+
         return (
             <div className='preview'>
                 <img src={this.state.img} alt={this.state.name} />
                 <p>#{this.formattedId}</p>
                 <p>{pokemonName}</p>
-                <PokemonTypes id={this.state.id} requestType={TypeOrCounter.Type}/>
+                <Types id={this.state.id} requestType={TypeOrCounter.Type}/>
             </div>
         );
     }
 }
 
-export default PokemonPreview;
+export default Preview;
