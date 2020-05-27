@@ -43,7 +43,7 @@ class PokemonPreview extends React.Component<PokemonPreviewProps, PokemonPreview
         const pokemonName = this.firstLetterToUpperCase(this.state.name);
         // const pokemonTypes = this.state.types.map((element: PokemonType) => <span key={element.type.name}>{element.type.name} </span>);
         return (
-            <div className='pokemonPreview'>
+            <div className='preview'>
                 <img src={this.state.img} alt={this.state.name} />
                 <p>#{this.formattedId}</p>
                 <p>{pokemonName}</p>

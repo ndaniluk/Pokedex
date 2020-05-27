@@ -1,5 +1,5 @@
 import React from 'react';
-import './type-icons.css';
+import './pokemonTypes.css';
 import ApiInfo from '../../api.json';
 
 export enum TypeOrCounter {
@@ -62,7 +62,7 @@ class PokemonTypes extends React.Component<PokemonTypesProps, PokemonTypesState>
             );
         });
         return (
-            <div className='wrapper'>
+            <div>
                 {pokemonTypes}
             </div>
         );
