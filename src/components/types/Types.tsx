@@ -81,6 +81,7 @@ class Types extends React.Component<TypesProps, TypesState> {
                 </div>
             );
         });
+        
         return (
             <div>
                 {pokemonTypes}

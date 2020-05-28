@@ -6,6 +6,7 @@ import { TypeOrCounter } from '../types/TypeOrCounter';
 
 export interface PreviewProps {
     id: number
+    
 }
 
 export interface PreviewState {
