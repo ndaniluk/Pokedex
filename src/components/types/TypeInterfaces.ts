@@ -1,21 +1,15 @@
-interface TypeDescription {
+export interface TypeDescription {
     name: string,
     url: string
 }
 
-interface TypeResponse {
+export interface TypeResponse {
     slot: number,
     type: TypeDescription
 }
 
-interface CounterResponse {
+export interface CounterResponse {
     damage_relations: {
         double_damage_from: TypeDescription[]
     }
 }
-
-export {
-    TypeDescription,
-    TypeResponse,
-    CounterResponse
-};

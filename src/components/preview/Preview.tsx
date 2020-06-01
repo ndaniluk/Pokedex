@@ -3,10 +3,10 @@ import ApiInfo from '../../api.json';
 import './Preview.css';
 import Types from '../types/Types';
 import { TypeOrCounter } from '../types/TypeOrCounter';
+import { firstLetterToUpperCase } from '../../utils/Utils';
 
 export interface PreviewProps {
     id: number
-    
 }
 
 export interface PreviewState {
@@ -37,12 +37,8 @@ class Preview extends React.Component<PreviewProps, PreviewState> {
             });
     }
 
-    firstLetterToUpperCase(str: string) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
     render() {
-        const pokemonName = this.firstLetterToUpperCase(this.state.name);
+        const pokemonName = firstLetterToUpperCase(this.state.name);
 
         return (
             <div className='preview'>
