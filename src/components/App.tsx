@@ -1,11 +1,13 @@
 import React from 'react';
-import Preview from './preview/Preview';
-import EvolutionChain from './evolutionChain/EvolutionChain';
+import Details from './details/Details';
+// import Preview from './preview/Preview';
+// import EvolutionChain from './evolutionChain/EvolutionChain';
 
 function App() {
-  // const pokemonId = 634;
+  const pokemonId = 654;
   return (
     <div>
+      <Details id={pokemonId} />
       {/* <Preview id={pokemonId} />
       <EvolutionChain id={pokemonId} /> */}
     </div>

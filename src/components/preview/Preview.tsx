@@ -3,7 +3,7 @@ import ApiInfo from '../../api.json';
 import './Preview.css';
 import Types from '../types/Types';
 import { TypeOrCounter } from '../types/TypeOrCounter';
-import { firstLetterToUpperCase } from '../../utils/Utils';
+import { firstLetterToUpperCase, getImage, formatIdToPokedex } from '../../utils/Utils';
 
 export interface PreviewProps {
     id: number
@@ -16,14 +16,12 @@ export interface PreviewState {
 }
 
 class Preview extends React.Component<PreviewProps, PreviewState> {
-    formattedId = this.props.id.toString().padStart(3, '0');
-
     constructor(props: PreviewProps) {
         super(props);
         this.state = {
             id: this.props.id,
             name: '',
-            img: ApiInfo.IMAGES + this.formattedId + '.png'
+            img: getImage(this.props.id)
         };
     }
 
@@ -39,11 +37,11 @@ class Preview extends React.Component<PreviewProps, PreviewState> {
 
     render() {
         const pokemonName = firstLetterToUpperCase(this.state.name);
-
+        const formattedId = formatIdToPokedex(this.props.id);
         return (
             <div className='preview'>
                 <img src={this.state.img} alt={this.state.name} />
-                <p>#{this.formattedId}</p>
+                <p>#{formattedId}</p>
                 <p>{pokemonName}</p>
                 <Types id={this.state.id} requestType={TypeOrCounter.Type}/>
             </div>

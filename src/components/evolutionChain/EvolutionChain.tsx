@@ -60,7 +60,7 @@ class EvolutionChain extends React.Component<EvolutionChainProps, EvolutionChain
 
     render() {
         const evo = this.state.chain.map(element => <Preview key={element.props.id} id={element.props.id} />);
-        return (
+            return (
             <div>
                 {evo}
             </div>

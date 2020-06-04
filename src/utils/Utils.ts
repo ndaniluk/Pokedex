@@ -1,4 +1,5 @@
 import { ChainExtended } from '../components/evolutionChain/EvolutionChainInterfaces';
+import ApiInfo from '../api.json';
 
 function firstLetterToUpperCase(str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -21,8 +22,20 @@ function makeEvolutionArray(evolutionChainPokemons: number[], evolutionChain: Ch
 
 }
 
+function formatIdToPokedex(id: number) {
+    return id.toString().padStart(3, '0');
+}
+
+
+function getImage(id: number) {
+    const formattedId = formatIdToPokedex(id);
+    return ApiInfo.IMAGES + formattedId + '.png';
+}
+
 export {
     firstLetterToUpperCase,
     getIdFromPokemonSpeciesUrl,
-    makeEvolutionArray
+    makeEvolutionArray,
+    formatIdToPokedex,
+    getImage
 };

@@ -55,7 +55,7 @@ class Types extends React.Component<TypesProps, TypesState> {
             });
     }
 
-    componentDidMount() {
+    componentDidMount() {   
         fetch(ApiInfo.API_BASE_URL + ApiInfo.POKEMON + this.props.id)
             .then(response => response.json())
             .then(response => {
