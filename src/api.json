@@ -3,5 +3,6 @@
     "IMAGES": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/",
     "POKEMON": "pokemon/",
     "EVOLUTION_CHAIN": "evolution-chain/",
-    "POKEMON_SPECIES": "pokemon-species/"
+    "POKEMON_SPECIES": "pokemon-species/",
+    "POKEMON_LIMITATION": "pokemon?limit=24&offset=0"
 }

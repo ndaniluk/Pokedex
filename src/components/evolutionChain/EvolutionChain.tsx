@@ -20,16 +20,16 @@ class EvolutionChain extends React.Component<EvolutionChainProps, EvolutionChain
         };
     }
 
+    componentDidMount() {
+        this.setEvolutionChain(this.props.id);
+    }
+
     getChain = () => {
         fetch(ApiInfo.API_BASE_URL + ApiInfo.EVOLUTION_CHAIN + this.props.id)
             .then(response => response.json())
             .then(response => {
                 return response;
             });
-    }
-
-    componentDidMount() {
-        this.setEvolutionChain(this.props.id);
     }
 
     setEvolutionChain = (pokemonId: number) => {
