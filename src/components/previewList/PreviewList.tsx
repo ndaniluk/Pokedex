@@ -2,6 +2,7 @@ import React from 'react';
 import Preview from '../preview/Preview';
 import ApiInfo from '../../api.json';
 import { PokemonLimitationResponse } from './PreviewListInterfaces';
+import DetailsModal from '../../hoc/Modal';
 
 export interface PreviewListProps {
 
@@ -35,7 +36,7 @@ class PreviewList extends React.Component<PreviewListProps, PreviewListState> {
         this.setState(prevState => {
             let previewsArray: JSX.Element[] = prevState.previews;
             for (let i = this.state.currentOffset; i < this.state.currentOffset + this.state.elementsOnOneLoad; i++) {
-                previewsArray.push(<Preview id={i} />);
+                previewsArray.push(<DetailsModal pokemonId={i} />);
             }
             return ({
                 currentOffset: prevState.currentOffset + this.state.elementsOnOneLoad,
