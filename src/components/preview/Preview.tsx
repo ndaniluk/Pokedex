@@ -4,7 +4,7 @@ import './Preview.css';
 import Types from '../types/Types';
 import { TypeOrCounter } from '../types/TypeOrCounter';
 import { firstLetterToUpperCase, getImage, formatIdToPokedex } from '../../utils/Utils';
-// import Button from 'react-bootstrap/Button';
+import { Image } from 'react-bootstrap';
 
 export interface PreviewProps {
     id: number
@@ -36,16 +36,21 @@ class Preview extends React.Component<PreviewProps, PreviewState> {
             });
     }
 
+
+
     render() {
         const pokemonName = firstLetterToUpperCase(this.state.name);
         const formattedId = formatIdToPokedex(this.props.id);
-        return (
-                <div className='preview'>
-                    <img src={this.state.img} alt={this.state.name} />
-                    <p>#{formattedId}</p>
-                    <p>{pokemonName}</p>
+        if (this.state.name)
+            return (
+                <div className="preview">
+                    <Image src={this.state.img} />
+                    <p>#{formattedId} {pokemonName}</p>
                     <Types id={this.state.id} requestType={TypeOrCounter.Type} />
                 </div>
+            );
+        return (
+            <></>
         );
     }
 }

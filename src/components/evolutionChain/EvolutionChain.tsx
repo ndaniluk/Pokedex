@@ -3,6 +3,7 @@ import Preview from '../preview/Preview';
 import ApiInfo from '../../api.json';
 import { EvolutionChainUrlFromPokemonSpecies, EvolutionChainResponse } from './EvolutionChainInterfaces';
 import { makeEvolutionArray } from '../../utils/Utils';
+import DetailsModal from '../../hoc/DetailsModal';
 
 export interface EvolutionChainProps {
     id: number
@@ -59,11 +60,11 @@ class EvolutionChain extends React.Component<EvolutionChainProps, EvolutionChain
     }
 
     render() {
-        const evo = this.state.chain.map(element => <Preview key={element.props.id} id={element.props.id} />);
+        const evolutionChain = this.state.chain.map(element => <DetailsModal key={element.props.id} pokemonId={element.props.id} />);
             return (
-            <div>
-                {evo}
-            </div>
+            <>
+                {evolutionChain}
+            </>
         );
     }
 }

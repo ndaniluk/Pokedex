@@ -83,7 +83,7 @@ class Types extends React.Component<TypesProps, TypesState> {
         });
         
         return (
-            <div>
+            <div className="types">
                 {pokemonTypes}
             </div>
         );

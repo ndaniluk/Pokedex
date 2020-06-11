@@ -1,0 +1,8 @@
+.detailsModal {
+    max-width: 40.5vw;
+    font-family: 'Flexo Medium';
+}
+
+.modalPreview {
+    display: inline-block;
+}

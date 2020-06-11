@@ -1,8 +1,6 @@
 import React from 'react';
-import Preview from '../preview/Preview';
-import ApiInfo from '../../api.json';
-import { PokemonLimitationResponse } from './PreviewListInterfaces';
-import DetailsModal from '../../hoc/Modal';
+import DetailsModal from '../../hoc/DetailsModal';
+import './previewList.css';
 
 export interface PreviewListProps {
 
@@ -20,7 +18,7 @@ class PreviewList extends React.Component<PreviewListProps, PreviewListState> {
         this.state = {
             currentOffset: 1,
             previews: [],
-            elementsOnOneLoad: 23
+            elementsOnOneLoad: 24
         };
     }
 
@@ -30,13 +28,13 @@ class PreviewList extends React.Component<PreviewListProps, PreviewListState> {
 
     componentWillUnmount() {
         localStorage.setItem('appState', JSON.stringify(this.state));
-      }
+    }
 
     registerMorePreviews = () => {
         this.setState(prevState => {
             let previewsArray: JSX.Element[] = prevState.previews;
             for (let i = this.state.currentOffset; i < this.state.currentOffset + this.state.elementsOnOneLoad; i++) {
-                previewsArray.push(<DetailsModal pokemonId={i} />);
+                previewsArray.push(<DetailsModal pokemonId={i} key={i} />);
             }
             return ({
                 currentOffset: prevState.currentOffset + this.state.elementsOnOneLoad,
@@ -47,9 +45,12 @@ class PreviewList extends React.Component<PreviewListProps, PreviewListState> {
 
     render() {
         return (
-            <div>
-                <div>{this.state.previews}</div>
-                <button onClick={() => this.registerMorePreviews()}>Load More</button>
+            <div className="gridBg">
+                <div className="parent">
+                    {this.state.previews}
+                </div>
+                <div className="icon loadMoreButton" onClick={() => this.registerMorePreviews()}>
+                </div>
             </div>
         );
     }

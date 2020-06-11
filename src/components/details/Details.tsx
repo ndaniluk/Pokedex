@@ -5,8 +5,7 @@ import EvolutionChain from '../evolutionChain/EvolutionChain';
 import { DetailsResponse, DescriptionResponse } from './DetailsInterfaces';
 import { getImage, firstLetterToUpperCase } from '../../utils/Utils';
 import ApiInfo from '../../api.json';
-// import { Button, Modal } from 'react-bootstrap';
-
+import './Details.css';
 
 export interface DetailsProps {
   id: number
@@ -70,48 +69,32 @@ class Details extends React.Component<DetailsProps, DetailsState> {
       });
   }
 
-  // MyVerticallyCenteredModal = (props) => {
-  //   return (
-  //     <Modal
-  //       {...props}
-  //       size="lg"
-  //       aria-labelledby="contained-modal-title-vcenter"
-  //       centered
-  //     >
-  //       <Modal.Header closeButton>
-  //         <Modal.Title id="contained-modal-title-vcenter">
-  //           Modal heading
-  //             </Modal.Title>
-  //       </Modal.Header>
-  //       <Modal.Body>
-  //         <h4>Centered Modal</h4>
-  //         <p>
-  //           Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-  //           dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-  //           consectetur ac, vestibulum at eros.
-  //             </p>
-  //       </Modal.Body>
-  //       <Modal.Footer>
-  //         <Button onClick={props.onHide}>Close</Button>
-  //       </Modal.Footer>
-  //     </Modal>
-  //   );
-  // }
-
-
   render() {
     const pokemonName = firstLetterToUpperCase(this.state.name);
+    const weightIconSrc = window.location.origin + '/icons/weight.svg';
+    const heightIconSrc = window.location.origin + '/icons/height.svg';
+
     return (
-      <div>
-        <p>{pokemonName}</p>
-        <img src={this.state.img} alt={this.state.name} />
-        <p>{this.state.description}</p>
-        <p>{this.state.height}</p>
-        <p>{this.state.weight}</p>
-        <p>Types: <Types id={this.props.id} requestType={TypeOrCounter.Type} /></p>
-        <p>Counters: <Types id={this.props.id} requestType={TypeOrCounter.Counter} /></p>
-        <p>Evolutions: <EvolutionChain id={this.props.id} /></p>
-      </div>
+      <>
+        <h3>{pokemonName}</h3>
+        <div className="img">
+          <img src={this.state.img} alt={this.state.name} />
+        </div>
+        <div className="description">
+          <p>{this.state.description}</p>
+        </div>
+        <div className="measurment">
+          <p><img src={heightIconSrc} alt="height" className="measurmentIcon" />{this.state.height * 10}cm</p><br />
+          <p><img src={weightIconSrc} alt="weight" className="measurmentIcon" />{this.state.weight / 10}kg</p>
+        </div>
+        <div className="detailsTypes">
+          <p>Types:</p><Types id={this.props.id} requestType={TypeOrCounter.Type} /><br />
+          <p>Counters:</p> <Types id={this.props.id} requestType={TypeOrCounter.Counter} />
+        </div>
+        <div className="evolutions">
+          <h4>Evolutions:</h4> <EvolutionChain id={this.props.id} />
+        </div>
+      </>
     );
   }
 }

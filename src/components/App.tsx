@@ -3,9 +3,7 @@ import PreviewList from './previewList/PreviewList';
 
 function App() {
   return (
-    <div>
       <PreviewList />
-    </div>
   );
 }
 
